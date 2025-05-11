@@ -15,3 +15,10 @@ VALUES
     (102, 'Jane Smith', 'Keyboard'),
     (102, 'Jane Smith', 'Mouse'),
     (103, 'Emily Clark', 'Phone');
+
+-- Question 2 - Achieving Second Normal Form
+-- Create the Orders table for order-level data
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY,
+    CustomerName VARCHAR(50)
+);
