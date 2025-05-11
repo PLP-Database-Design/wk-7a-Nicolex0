@@ -22,3 +22,22 @@ CREATE TABLE Orders (
     OrderID INT PRIMARY KEY,
     CustomerName VARCHAR(50)
 );
+
+-- Create the OrderItems table for product-level data
+CREATE TABLE OrderItems (
+    OrderID INT,
+    Product VARCHAR(50),
+    Quantity INT,
+    PRIMARY KEY (OrderID, Product),
+    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)
+);
+
+-- Inserting data into Orders table with unique OrderID and CustomerName
+INSERT INTO Orders (OrderID, CustomerName)
+SELECT DISTINCT OrderID, CustomerName
+FROM OrderDetails;
+
+-- Inserting data into OrderItems table -OrderID, Product, Quantity
+INSERT INTO OrderItems (OrderID, Product, Quantity)
+SELECT OrderID, Product, Quantity
+FROM OrderDetails;
